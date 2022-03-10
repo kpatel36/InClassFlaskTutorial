@@ -3,6 +3,10 @@
 from flask import Flask
 # from our config file, import the Config class that we created
 from config import Config
+# our flask app is dumb! we need to tell it if any routes or models exist
+# import the routes file here (must be after the definition and config or app)
+
+
 
 # define/instantiate our Flask object...aka tell the computer that this is a flask app
 # pretty standard to call instantiation variable 'app'. if you change it to something else, youll need to change other elements of code 
@@ -12,3 +16,7 @@ app = Flask(__name__)
 # tell the app how it should be configured - over to the config.py file to set up for this!
 app.config.from_object(Config)
 # aka configure our flask app from the Config object we just wrote
+
+
+
+from . import routes # from the app folder(that we're currently in ) import the 

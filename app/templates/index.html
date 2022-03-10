@@ -1,0 +1,23 @@
+{# An exploration of Jinga Templating #} {# This is a Jinge Comment #} 
+
+{% if True %} 
+{# curly bracket percent sign is a Jinge statement aka similar to a python process (conditional or loop) #} 
+{# how are code blocks controlled #} 
+{# in python, code blocksare controlled by indentation #} 
+{# does indentation error in html? No. #} 
+{# how are code blocks are controlled by jinja? they must be manually ended#} 
+{% for x in range(5) %} 
+    {#our jinja for loop here will make its contents multiple times on the html page#} 
+    <h1>Whoa</h1>
+{% endfor %} 
+
+{% extends 'components/layout.html' %} 
+{% block leftcol %} 
+<h1>Hello {{x}}, Welcome to Flask</h1>
+{% endblock leftcol %}
+
+{% block rightcol %} 
+<h1>Let's see if this works</h1>
+<img src="https://i.kym-cdn.com/photos/images/newsfeed/001/430/367/007.gif" class="img-fluid">
+{% endblock rightcol %}
+{% endif%}

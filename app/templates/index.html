@@ -6,14 +6,18 @@
 {# in python, code blocksare controlled by indentation #} 
 {# does indentation error in html? No. #} 
 {# how are code blocks are controlled by jinja? they must be manually ended#} 
-{% for x in range(5) %} 
+{% for x in range(1) %} 
     {#our jinja for loop here will make its contents multiple times on the html page#} 
-    <h1>Whoa</h1>
+    <h1>Flask App Index.html</h1>
 {% endfor %} 
-
 {% extends 'components/layout.html' %} 
 {% block leftcol %} 
-<h1>Hello {{x}}, Welcome to Flask</h1>
+<h1>Hello {{ name }}, Welcome to Flask</h1>
+{% for name in faves %}
+    <ul>
+        <li class="list-group-item">{{ name }}</span></li>
+    </ul>
+{% endfor %}
 {% endblock leftcol %}
 
 {% block rightcol %} 

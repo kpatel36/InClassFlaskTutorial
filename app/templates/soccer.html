@@ -1,14 +1,36 @@
 {% extends 'components/layout.html' %} 
 
 {% block rightcol %}
-<h1> Manchester City beat Sporting Lisbon in the Champions League ROund of 16</h1>
-<h3>The final score was {{ mcfg }}-{{ sig }} on aggregate</h3>
-<img src="https://i.kym-cdn.com/photos/images/newsfeed/001/430/367/007.gif" alt="...." class="img-fluid">
+<h1> {{ headline }}</h1>
+<h2>{{ manager }}</h2>
+<h3>The final score was {{ mcfg }}-{{ slg }} on aggregate</h3>
+<br>
+<div class ="card">
+    <div class ='card-header'>
+        Favorites
+    </div>
+    <ul>
+        <!--should contain one li for each favorite player with the player's name as the contents -->
+        {% for name in favorites %} 
+            {% if 'F' in name %}
+                <li class="list-group-item font-weight-bold">{{ name }}<span class='float-right'>{{ favorites[name] }}</span></li> 
+            {% elif slg == mcfg %} 
+                <li class="list-group-item">{{ name }}<span class='float-right'>{{ favorites[name] }}</span></li>
+            {% else %}
+                <h3>abcdefghijklmnopqrstuvwxyz</h3>
+            {% endif %}
+        {% endfor %} 
+    </ul>    
+</div>
 {% endblock rightcol %} 
 
-{% block leftcol %}
-<h1> Manchester City beat Sporting Lisbon in the Champions League ROund of 16</h1>
-<h3>The final score was {{ mcfg }}-{{ sig }} on aggregate</h3>
-<img src="https://i.kym-cdn.com/photos/images/newsfeed/001/430/367/007.gif" alt="...." class="img-fluid">
+{% block leftcol %} 
+    {% if mcfg >slg %}
+        <h1> Manchester City beat Sporting Lisbon in the Champions League Round of 16</h1>
+        <h3>The final score was {{ mcfg }}-{{ slg }} on aggregate</h3>
+    {% elif slg == mcfg %} 
+        <h1> The score is tied</h1>
+    {% else %} 
+        <h1> ;( </h1>
+    {% endif %} 
 {% endblock leftcol %} 
-
